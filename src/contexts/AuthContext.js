@@ -23,6 +23,11 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user)
+            user.updateProfile({
+                test: "test"
+            }).then(() => {
+                console.log("Set test profile field")
+            })
             setLoading(false)
         })
 
